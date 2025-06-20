@@ -12,7 +12,6 @@ from word_forms.word_forms import get_word_forms
 # import astは消しておく
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from markupsafe import Markup
-import psutil
 import os
 
 app = Flask(__name__)
