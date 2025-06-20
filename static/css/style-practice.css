@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+
+header{
+    display: flex;
+    height: 60px;
+    background-color: #02A08F;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    font-family: 'M PLUS 1p', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+.header-left {
+    font-size: 24px;
+  }
+
+.header-right .logo {
+    height: 40px;
+  }
+
+body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.25;
+  }
+
+footer{
+    height: 50px;
+    background-color: #02A08F;
+    justify-content: center;
+    align-items: center;
+    font-family: 'M PLUS 1p', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 10px;
+    }
+
+    .header-left {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .site-info-wrapper {
+        margin: 8px 0;
+    }
+
+    .header-right {
+        width: 100%;
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .header-right .logo {
+        height: auto;
+        max-width: 80%;
+    }
+
+    footer {
+        height: auto;
+        padding: 10px;
+        font-size: 14px;
+    }
+}

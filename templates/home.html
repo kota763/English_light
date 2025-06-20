@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8", lang="ja">
+    <title>HOME</title>
+    <link rel="stylesheet", type="text/css" href="./static/css/style-home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header>
+    <div class="header-left">Vocabulary道場</div>
+    <div class="site-info-wrapper">
+        <div class="site-info-trigger">このサイトの紹介</div>
+        <div class="site-info-popup">
+            <p>「Vocabulary道場」は、英語学習者がアウトプットを通して楽しく語彙力を鍛えるための無料Webアプリです。</p><p>「単語帳では覚えたのにテストでは出てこなかった」を解消しましょう✏️</p><p>「始める」を押すとAIにより問題が自動で生成されます。</p>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <img src="{{ url_for('static', filename='images/English-Logo.jpg') }}" alt="Logo" class="logo">
+    </div>
+</header>
+
+
+<h2>レベルを選んで学習スタート!</h2>
+<form action="/practice" method="get">
+    <select name="level">
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+    </select>
+    <button type="submit" class="round-button">始める</button>
+</form>
+
+
+
+<h3>各区分のレベル感</h3>
+<table>
+    <thead>
+        <tr>
+            <td class="col">区分</td>
+            <th scope="col">単語のレベル</th>
+            <th scope="col">TOEIC目標スコア</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>A1</th>
+            <td data-label="学年" class="txt">中1</td>
+            <td data-label="スコア" class="score">0~225</td>
+        </tr>
+        <tr>
+            <th>A2</th>
+            <td data-label="学年" class="txt">中2</td>
+            <td data-label="スコア"class="score">225~550</td>
+        </tr>
+        <tr>
+            <th>B1</th>
+            <td data-label="学年" class="txt">中3~高1</td>
+            <td data-label="スコア"class="score">550~780</td>
+        </tr>
+        <tr>
+            <th>B2</th>
+            <td data-label="学年" class="txt">高2~</td>
+            <td data-label="スコア" class="score">780~</td>
+        </tr>
+    </tbody>
+</table>  
+
+
+
+<footer>
+    <small>あなたの単語学習の手助けに</small>
+</footer>
+
+</body>
+</html>
+
+<script>
+    function showPopup(index) {
+      const popupRow = document.getElementById("popup-" + index);
+      popupRow.style.display = (popupRow.style.display === "none") ? "table-row" : "none";
+    }
+  </script>
+  

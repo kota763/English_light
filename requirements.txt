@@ -1,0 +1,16 @@
+# サーバー
+gunicorn==23.0.0
+Flask==3.0.3
+MarkupSafe==2.1.3
+
+# モデルとトークナイザー
+transformers==4.40.2
+torch==2.2.1  # 2.7.1 だと重いので軽量版推奨
+
+# NLP処理
+spacy==3.7.2 --only-binary :all:
+nltk==3.9.1
+word-forms==2.1.0
+
+# CSVやデータ処理
+pandas==2.2.2 --only-binary :all:

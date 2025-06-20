@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+
+header{
+    display: flex;
+    height: 60px;
+    background-color: #02A08F;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    font-family: 'M PLUS 1p', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.header-left {
+    font-size: 24px;
+}
+
+.header-right .logo {
+    height: 40px;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.25;
+}
+
+
+.speech-bubble {
+  position: relative;
+  background: #3DBA97;
+  color: white;
+  border-radius: 0.4em;
+  padding: 1em;
+  margin: 20px 0;
+  display: inline-block;
+  font-family: 'M PLUS 1p', sans-serif;
+  line-height: 1.4;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #3DBA97;
+  border-bottom: 0;
+  margin-left: -20px;
+  margin-bottom: -20px;
+}
+
+.correct-and-save {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.correct-and-save form {
+  margin: 0;
+}
+
+#DeepL-options{
+  text-decoration: none;
+}
+
+.button-row {
+  display: flex;
+  gap: 1em;
+  margin-top: 2em;
+  align-items: center;
+}
+
+.button-row form,
+.button-row .home-button {
+  margin: 0;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: #ccc;
+  text-decoration: none;
+  border-radius: 4px;
+  color: black;
+}
+.home-button:hover {
+  background-color: #bbb;
+}
+
+footer{
+    height: 50px;
+    background-color: #02A08F;
+    justify-content: center;
+    align-items: center;
+    font-family: 'M PLUS 1p', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .header-left {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+  
+    .header-right {
+      width: 100%;
+      text-align: center;
+      margin-top: 8px;
+    }
+  
+    .header-right .logo {
+      height: auto;
+      max-width: 80%;
+    }
+  
+    .speech-bubble {
+      max-width: 100%;
+      font-size: 14px;
+      padding: 0.8em;
+    }
+  
+    .speech-bubble::after {
+      left: 20px;
+      border: 16px solid transparent;
+      border-top-color: #02A08F;
+      margin-left: -16px;
+      margin-bottom: -16px;
+    }
+  
+    footer {
+      height: auto;
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+  

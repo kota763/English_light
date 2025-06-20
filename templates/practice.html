@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8", lang="ja">
+    <title>Practice</title>
+    <link rel="stylesheet", type="text/css" href="./static/css/style-practice.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<header>
+    <div class="header-left">Vocabulary道場</div>
+    <div class="header-right">
+        <img src="{{ url_for('static', filename='images/English-Logo.jpg') }}" alt="Logo" class="logo">
+    </div>
+</header>
+
+<h1>空欄に入る単語は？</h1>
+
+<p>CEFR-{{ level }}レベルの問題</p>
+
+{{ musikui_text }}
+
+<form action="/submit" method="POST">
+    {% for word, _ in options %}
+    <input type="radio" name="answer" value="{{ word }}" required>{{ word }}<br>
+    {% endfor %}
+
+    <!--問題文と正解と全選択肢の情報とレベルも一緒に送っておく-->
+
+    <input type="hidden" name="generated_text" value="{{ generated_text }}">
+    <input type="hidden" name="musikui_text" value="{{ musikui_text }}">
+    <input type="hidden" name="level" value="{{ level }}">
+    <input type="hidden" name="correct" value="{{ correct }}">
+
+
+    <button type="submit">答える</button>
+</form>
+
+
+
+<footer>
+    <small>あなたの単語学習の手助けに</small>
+</footer>
+
+</body>
+</html>
