@@ -21,7 +21,7 @@ nlp = spacy.load("en_core_web_sm")
 lemmatizer = WordNetLemmatizer()
 # GPUを使用可能か確認し、使用する
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model_name = "distilgpt2"
+model_name = "openai-community/gpt2"
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 model = GPT2LMHeadModel.from_pretrained(model_name).to(device)
@@ -40,7 +40,7 @@ CSV_MAP = {
 
 
 # 文章生成
-def generate_text(prompt, max_new_tokens=100, temperature=0.7):
+def generate_text(prompt, max_new_tokens=50, temperature=0.7):
     """
     テキスト生成の関数
     prompt: 入力テキスト（開始文）
