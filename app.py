@@ -9,16 +9,25 @@ import random
 import nltk
 from nltk.stem import WordNetLemmatizer
 from word_forms.word_forms import get_word_forms
-import ast
+# import astは消しておく
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 from markupsafe import Markup
+import psutil
+import os
 
 app = Flask(__name__)
 
-# Natural language tools
+# モデル＆依存ライブラリのロード（起動時に一度だけ）
 nltk.download("wordnet")
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm", disable=["ner", "parser"])  # 軽量化のためNERやparserを無効に
 lemmatizer = WordNetLemmatizer()
+# 以下、元あったコード
+# Natural language tools
+# nltk.download("wordnet")
+# nlp = spacy.load("en_core_web_sm")
+# lemmatizer = WordNetLemmatizer()
+
+
 # GPUを使用可能か確認し、使用する
 # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # renderの無料枠ではGPUは使えず結局CPUになるので、この記述でいく
@@ -28,6 +37,7 @@ tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 model = GPT2LMHeadModel.from_pretrained(model_name).to(device)
 model.config.pad_token_id = tokenizer.pad_token_id
+
 
 ### CSVファイル
 df = pd.read_csv("./static/csv/gutenberg_all_books.csv")
@@ -86,6 +96,8 @@ def dummy_samepos(HATENA_Block, HATENA_POS, level):
 
     # df_words_restrictedからダミーとするものを選ぶ
     dummy = df_words_restricted.iloc[random.randint(0, len(df_words_restricted) - 1)]
+
+    print_memory_usage()
 
     return dummy[0]
 
@@ -350,12 +362,14 @@ def practice():
     # シャッフルする
     random.shuffle(List)
 
+
     return render_template(
         "practice.html",
         generated_text=generated_text,
         musikui_text=musikui_text,
         level=level,
         correct=HATENA_Block,
+        options=List
     )
 
 @app.route("/submit", methods=["GET", "POST"])
@@ -384,5 +398,13 @@ def submit():
         correct=correct,
     )
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5000)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    # 本番モードで起動（デバッグ・リロード無効化）
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
