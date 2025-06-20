@@ -20,12 +20,13 @@ nltk.download("wordnet")
 nlp = spacy.load("en_core_web_sm")
 lemmatizer = WordNetLemmatizer()
 # GPUを使用可能か確認し、使用する
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model_name = "openai-community/gpt2"
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model_name = "sshleifer/tiny-gpt2"
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 tokenizer.pad_token = tokenizer.eos_token
 model = GPT2LMHeadModel.from_pretrained(model_name).to(device)
 model.config.pad_token_id = tokenizer.pad_token_id
+model.to("cpu")
 
 ### CSVファイル
 df = pd.read_csv("./static/csv/gutenberg_all_books.csv")
